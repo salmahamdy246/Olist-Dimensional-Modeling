@@ -1,6 +1,6 @@
 # Olist Dimensional Modeling
 
-## 📌 Project Overview
+## Project Overview
 
 This project builds an end-to-end **e-commerce data warehouse** using
 the Brazilian **Olist marketplace dataset**.
@@ -15,7 +15,7 @@ using distributed storage and processing technologies.
 
 ------------------------------------------------------------------------
 
-## 🎯 Business Problem
+## Business Problem
 
 Olist is a multi-seller e-commerce marketplace where the same product
 can be sold by different sellers at different prices over time.
@@ -31,7 +31,7 @@ The business needs a data warehouse that can:
 
 ------------------------------------------------------------------------
 
-## 📊 Data Sources
+## Data Sources
 
 The project uses the following Olist datasets:
 
@@ -63,7 +63,7 @@ The project uses the following Olist datasets:
 
 ------------------------------------------------------------------------
 
-# 🏗️ Architecture
+#  Architecture
 
 The project follows a **Medallion Architecture**:
 
@@ -110,7 +110,7 @@ The project follows a **Medallion Architecture**:
               └─────────────────┘
 ```
 
-## 🛠️ Technologies
+##  Technologies
 
 -   **Apache NiFi** --- batch data ingestion and flow orchestration.
 -   **HDFS** --- distributed storage for Raw, Silver, and Gold zones.
@@ -123,7 +123,7 @@ The project follows a **Medallion Architecture**:
 
 ------------------------------------------------------------------------
 
-# 🔄 Data Ingestion
+#  Data Ingestion
 
 Each source dataset is ingested through an Apache NiFi flow:
 
@@ -177,7 +177,7 @@ Queued FlowFiles were also cleared before restarting the flow.
 
 ------------------------------------------------------------------------
 
-# 🥉 Bronze / Raw Layer
+#  Bronze / Raw Layer
 
 The Bronze layer preserves the ingested source data.
 
@@ -198,7 +198,7 @@ Bronze
 
 ------------------------------------------------------------------------
 
-# 🥈 Silver Layer
+#  Silver Layer
 
 The Silver layer contains **cleaned, validated, and standardized
 datasets** produced with PySpark.
@@ -242,7 +242,7 @@ The Silver layer keeps source-level grain:
 
 ------------------------------------------------------------------------
 
-# 🥇 Gold Layer
+#  Gold Layer
 
 The Gold layer contains the final **business-ready Star Schema**.
 
@@ -275,7 +275,7 @@ Dim_Product ───────► Fact_Order_Items ◄────── Dim_
 
 ------------------------------------------------------------------------
 
-# ⭐ Star Schema
+#  Star Schema
 
 The Star Schema was selected because dimensions connect directly to the
 central fact table.
@@ -290,7 +290,7 @@ Benefits:
 
 ------------------------------------------------------------------------
 
-# 📦 Dim_Product --- SCD Type 2
+#  Dim_Product --- SCD Type 2
 
 `Dim_Product` uses **Slowly Changing Dimension Type 2 (SCD Type 2)** to
 preserve product price history.
@@ -332,7 +332,7 @@ and each product has exactly one current version.
 
 ------------------------------------------------------------------------
 
-# 👥 Dim_Customer --- RFM Analysis
+#  Dim_Customer --- RFM Analysis
 
 `Dim_Customer` contains customer attributes and RFM metrics.
 
@@ -385,7 +385,7 @@ RFM_Score
 
 ------------------------------------------------------------------------
 
-# 🐛 Important Bug Found & Fixed
+#  Important Bug Found & Fixed
 
 A major issue was discovered during RFM development.
 
@@ -426,7 +426,7 @@ repeat-purchase behavior.
 
 ------------------------------------------------------------------------
 
-# 📅 Dim_Date
+#  Dim_Date
 
 `Dim_Date` is a conformed date dimension generated from the actual order
 date range.
@@ -460,7 +460,7 @@ date range.
 
 ------------------------------------------------------------------------
 
-# 🧾 Fact_Order_Items
+#  Fact_Order_Items
 
 The fact table connects:
 
@@ -519,7 +519,7 @@ The fact row count exactly matches the source `order_items` row count.
 
 ------------------------------------------------------------------------
 
-# 📈 Business Analytics & KPIs
+#  Business Analytics & KPIs
 
 The Gold layer is queried through Hive to produce business KPIs for BI
 reporting.
@@ -773,7 +773,7 @@ ORDER BY average_price DESC;
 
 ------------------------------------------------------------------------
 
-# 📊 Power BI Dashboard
+#  Power BI Dashboard
 
 The Gold Star Schema is exposed through Hive and connected to Power BI
 for dashboard reporting.
@@ -871,7 +871,7 @@ customer behavior.
 
 ------------------------------------------------------------------------
 
-# 💡 Business Insights Supported
+#  Business Insights Supported
 
 The dashboard can support decisions around:
 
@@ -909,7 +909,7 @@ The dashboard can support decisions around:
 
 ------------------------------------------------------------------------
 
-# 🧪 Data Quality & Validation
+#  Data Quality & Validation
 
 Validation was performed throughout the pipeline.
 
@@ -934,7 +934,7 @@ Fact_Order_Items : 112,650 rows
 
 ------------------------------------------------------------------------
 
-# 🚀 Key Engineering Decisions
+#  Key Engineering Decisions
 
 ### 1. SCD Type 2 for Products
 
@@ -972,7 +972,7 @@ schema-on-read approach.
 
 ------------------------------------------------------------------------
 
-# 📁 Suggested Repository Structure
+#  Suggested Repository Structure
 
 ``` text
 customers-products-dimensional-modeling/
@@ -1013,7 +1013,7 @@ customers-products-dimensional-modeling/
 
 ------------------------------------------------------------------------
 
-# 🏁 Final Outcome
+#  Final Outcome
 
 This project demonstrates an end-to-end Data Engineering workflow:
 
@@ -1051,13 +1051,13 @@ The final warehouse provides:
 
 ------------------------------------------------------------------------
 
-## 👨‍💻 Project Team
+##  Project Team
 
 **Adham · Ahmed · Salma · Reem · Omar**
 
 ------------------------------------------------------------------------
 
-## 📌 Project Summary
+##  Project Summary
 
 **Architecture:** Medallion Architecture + Star Schema\
 **Processing:** Apache Spark / PySpark\
