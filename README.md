@@ -1,4 +1,4 @@
-# Customers and Products Dimensional Modeling
+# Olist Dimensional Modeling
 
 ## 📌 Project Overview
 
